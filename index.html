@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MapleSensors – Precision Measurement & Sensor Solutions</title>
+  <meta name="description" content="MapleSensors is a Canadian distributor of precision sensors. Nationwide distribution backed by real engineering expertise." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>" />
+  <style>
+    /* Hero background */
+    .hero {
+      background: linear-gradient(160deg, #1a1a1a 0%, #2a2a2a 50%, #111111 100%);
+    }
+    /* Hero SVG illustration layer */
+    .hero-visual {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-visual svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+    }
+    /* Softer section backgrounds */
+    .section-alt { background: var(--clr-light); }
+
+    /* Intro strip below hero */
+    .intro-strip {
+      background: var(--clr-white);
+      border-bottom: 1px solid var(--clr-border);
+      padding-block: 1.5rem;
+    }
+    .intro-strip-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+    }
+    .intro-item {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--clr-primary);
+    }
+    .intro-item svg { width: 20px; stroke: var(--clr-secondary); }
+
+    /* Lighter stats strip */
+    .stats-light {
+      background: var(--clr-white);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin-top: 2rem;
+    }
+    .stats-light-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 0 1.5rem;
+      text-align: center;
+      max-width: 600px;
+      margin-inline: auto;
+    }
+    .stat-light-num {
+      font-family: var(--ff-heading);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--clr-secondary);
+      line-height: 1;
+      margin-bottom: .3rem;
+    }
+    .stat-light-label {
+      font-size: .85rem;
+      color: var(--clr-muted);
+      font-weight: 500;
+    }
+    .stat-divider {
+      width: 1px;
+      background: var(--clr-border);
+      align-self: stretch;
+    }
+
+    /* Application areas */
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem;
+    }
+    .app-card {
+      background: var(--clr-white);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .app-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); border-color: var(--clr-secondary); }
+    .app-icon { font-size: 2.25rem; margin-bottom: .75rem; }
+    .app-card h4 { font-size: .95rem; color: var(--clr-primary); margin-bottom: .3rem; }
+    .app-card p  { font-size: .8rem; color: var(--clr-muted); }
+
+    /* Technology intro band */
+    .tech-band {
+      background: linear-gradient(135deg, #1c1c1c 0%, #333333 100%);
+      padding-block: 4rem;
+    }
+    .tech-band-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .tech-band-visual {
+      aspect-ratio: 4/3;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .tech-band-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .tech-band-visual svg { width: 100px; position: relative; }
+    @media(max-width:768px){ .tech-band-grid { grid-template-columns: 1fr; gap:2rem; } }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 1.5 L10 5 L7.5 4 L9.5 7.5 L4 8.5 L7.5 12 L5.5 15.5 L9.5 14.5 L9 18.5 L12 17.5 L15 18.5 L14.5 14.5 L18.5 15.5 L16.5 12 L20 8.5 L14.5 7.5 L16.5 4 L14 5 Z" fill="white" opacity="0.4"/><line x1="12" y1="18" x2="12" y2="22.5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/><path d="M2,11 L4.5,11 C5,11 5.3,10.3 6,10.3 C6.7,10.3 7,11.7 7.5,11.7 C8,11.7 8.3,8 9.5,8 C10.7,8 11,14 12,14 C13,14 13.3,8.5 14.5,8.5 C15.7,8.5 16,13.5 17,13.5 C17.7,13.5 18,10.8 18.5,10.8 C19,10.8 19.3,11 20,11 L22,11" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <span class="nav-logo-text">Maple<span>Sensors</span></span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html"    class="nav-link active">Home</a></li>
+        <li><a href="products.html" class="nav-link">Products</a></li>
+        <li><a href="about.html"    class="nav-link">About Us</a></li>
+        <li><a href="contact.html"  class="nav-link nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+
+    <!-- Acoustic measurement illustration -->
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- ── Sound wave rings radiating from microphone (right side) ── -->
+        <circle cx="980" cy="350" r="68"  fill="none" stroke="rgba(200,16,46,0.30)" stroke-width="1.5"/>
+        <circle cx="980" cy="350" r="145" fill="none" stroke="rgba(200,16,46,0.22)" stroke-width="1.5"/>
+        <circle cx="980" cy="350" r="235" fill="none" stroke="rgba(200,16,46,0.15)" stroke-width="1.2"/>
+        <circle cx="980" cy="350" r="335" fill="none" stroke="rgba(200,16,46,0.09)" stroke-width="1"/>
+        <circle cx="980" cy="350" r="445" fill="none" stroke="rgba(200,16,46,0.06)" stroke-width="1"/>
+        <circle cx="980" cy="350" r="570" fill="none" stroke="rgba(200,16,46,0.03)" stroke-width="1"/>
+
+        <!-- ── Microphone capsule silhouette ── -->
+        <rect x="969" y="295" width="22" height="66" rx="11" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.22)" stroke-width="1.2"/>
+        <path d="M959 358 Q959 390 980 397 Q1001 390 1001 358" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.2"/>
+        <line x1="980" y1="397" x2="980" y2="414" stroke="rgba(255,255,255,0.22)" stroke-width="1.2"/>
+        <line x1="971" y1="414" x2="989" y2="414" stroke="rgba(255,255,255,0.22)" stroke-width="1.2"/>
+        <!-- diaphragm centre dot -->
+        <circle cx="980" cy="328" r="4" fill="rgba(200,16,46,0.5)" stroke="rgba(200,16,46,0.8)" stroke-width="1"/>
+
+        <!-- ── Primary sine waveform (large, slow) ── -->
+        <path d="M-60 370 Q130 200 320 370 Q510 540 700 370 Q890 200 1080 370 Q1270 540 1460 370"
+              fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="2.5"/>
+
+        <!-- ── Secondary waveform (higher frequency, red tinted) ── -->
+        <path d="M-60 355 Q65 285 190 355 Q315 425 440 355 Q565 285 690 355 Q815 425 940 355"
+              fill="none" stroke="rgba(200,16,46,0.12)" stroke-width="1.8"/>
+
+        <!-- ── High-frequency waveform (fine detail) ── -->
+        <path d="M0 350 Q60 310 120 350 Q180 390 240 350 Q300 310 360 350 Q420 390 480 350 Q540 310 600 350 Q660 390 720 350 Q780 310 840 350"
+              fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+        <!-- ── Oscilloscope measurement grid ── -->
+        <line x1="0" y1="230" x2="1200" y2="230" stroke="rgba(255,255,255,0.035)" stroke-width="1" stroke-dasharray="5,11"/>
+        <line x1="0" y1="350" x2="1200" y2="350" stroke="rgba(255,255,255,0.05)"  stroke-width="1" stroke-dasharray="5,11"/>
+        <line x1="0" y1="470" x2="1200" y2="470" stroke="rgba(255,255,255,0.035)" stroke-width="1" stroke-dasharray="5,11"/>
+
+        <line x1="240" y1="0" x2="240" y2="700" stroke="rgba(255,255,255,0.02)" stroke-width="1" stroke-dasharray="3,13"/>
+        <line x1="480" y1="0" x2="480" y2="700" stroke="rgba(255,255,255,0.02)" stroke-width="1" stroke-dasharray="3,13"/>
+        <line x1="720" y1="0" x2="720" y2="700" stroke="rgba(255,255,255,0.02)" stroke-width="1" stroke-dasharray="3,13"/>
+
+        <!-- ── dB scale labels ── -->
+        <text x="16" y="225" font-size="9" fill="rgba(255,255,255,0.13)" font-family="monospace">+20 dB</text>
+        <text x="16" y="345" font-size="9" fill="rgba(255,255,255,0.13)" font-family="monospace">  0 dB</text>
+        <text x="16" y="465" font-size="9" fill="rgba(255,255,255,0.13)" font-family="monospace">-20 dB</text>
+
+        <!-- ── Wave peak / node markers ── -->
+        <circle cx="320" cy="370" r="3.5" fill="rgba(200,16,46,0.55)"/>
+        <circle cx="700" cy="370" r="3.5" fill="rgba(200,16,46,0.55)"/>
+        <circle cx="190" cy="355" r="2.5" fill="rgba(255,255,255,0.35)"/>
+        <circle cx="440" cy="355" r="2.5" fill="rgba(255,255,255,0.35)"/>
+        <circle cx="690" cy="355" r="2.5" fill="rgba(255,255,255,0.35)"/>
+
+      </svg>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="highlight">Engineered for Precision.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          MapleSensors distributes high-quality sensors backed by technical expertise for testing, validation, and research.
+        </p>
+
+        <div class="hero-actions">
+          <a href="products.html" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Browse Products
+          </a>
+          <a href="contact.html" class="btn btn-outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Request a Quote
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INTRO STRIP ── -->
+  <div class="intro-strip">
+    <div class="container intro-strip-inner">
+      <div class="intro-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Fast Canadian Shipping
+      </div>
+      <div class="intro-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Requirements Consultation
+      </div>
+      <div class="intro-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Datasheets &amp; Calibration Certs
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WHY CHOOSE US ── -->
+  <section class="section" id="why-us">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Why MapleSensors</span>
+        <h2 class="section-title">The Right Measurement. Every Time.</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">We combine deep engineering knowledge with an extensive product range to deliver precision sensors that exceed expectations.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card fade-up">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Fast Lead Times</h3>
+          <p>In-stock inventory and direct manufacturer partnerships enable rapid order fulfilment across Canada — same-day processing for in-stock items.</p>
+        </div>
+
+        <div class="feature-card fade-up fade-up-delay-2">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Full Product Range</h3>
+          <p>From transducers and sensors to calibrators and accessories — one trusted source for all your precision measurement needs.</p>
+        </div>
+
+        <div class="feature-card fade-up fade-up-delay-3">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Expert Technical Support</h3>
+          <p>Our engineers provide pre-sales application guidance, custom configurations, and post sales support.</p>
+        </div>
+
+        <div class="feature-card fade-up">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3>Datasheets &amp; Certificates</h3>
+          <p>Comprehensive datasheets, calibration certificates, and installation guides available for every product in our catalogue.</p>
+        </div>
+
+      </div>
+
+      <!-- Lightweight stats row -->
+      <div class="stats-light fade-up" style="margin-top:3rem;">
+        <div class="stats-light-grid">
+          <div>
+            <div class="stat-light-num">CRYSOUND</div>
+            <div class="stat-light-label">Authorized Distributor</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div>
+            <div class="stat-light-num">Canada</div>
+            <div class="stat-light-label">Nationwide Shipping</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div>
+            <div class="stat-light-num">Expert</div>
+            <div class="stat-light-label">Technical Support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURED PRODUCTS ── -->
+  <section class="section section-alt" id="featured-products">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">A selection of our most popular precision sensors — engineered for demanding professional and industrial applications.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- CRY3203 -->
+        <div class="product-card fade-up">
+          <div class="product-card-img">
+            <img src="images/products/CRY3203.jpg" alt="CRY3203" class="product-photo" />
+            <div class="product-badge-wrap"><span class="badge badge-green">In Stock</span></div>
+          </div>
+          <div class="product-card-body">
+            <span class="badge badge-blue" style="margin-bottom:.5rem;">½″ · Free-Field · Prepolarized</span>
+            <h3>CRY3203 Measurement Microphone</h3>
+            <p>1/2-inch prepolarized free-field microphone. Frequency response matches the auditory range of the human ear — ideal for acoustic testing, anechoic chambers, and car noise testing.</p>
+            <div class="product-features">
+              <span class="product-feature-tag">3.15 Hz – 20 kHz</span>
+              <span class="product-feature-tag">16–146 dB</span>
+              <span class="product-feature-tag">IEC WS2F</span>
+            </div>
+            <div class="product-card-footer">
+              <a href="products.html" class="btn btn-primary btn-sm">View Details</a>
+              <a href="#" class="btn btn-outline-dark btn-sm">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Datasheet
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRY3403 -->
+        <div class="product-card fade-up fade-up-delay-1">
+          <div class="product-card-img">
+            <img src="images/products/CRY3403.jpg" alt="CRY3403" class="product-photo" style="padding:.5rem;" />
+            <div class="product-badge-wrap"><span class="badge">New</span></div>
+          </div>
+          <div class="product-card-body">
+            <span class="badge badge-blue" style="margin-bottom:.5rem;">¼″ · Free-Field · Ultra-Wideband</span>
+            <h3>CRY3403 Ultra-Wideband Microphone</h3>
+            <p>1/4-inch prepolarized free-field microphone reaching 90 kHz with extraordinary flat response. Handles SPLs up to 165 dB — ideal for high-definition speaker and wideband testing.</p>
+            <div class="product-features">
+              <span class="product-feature-tag">4 Hz – 90 kHz</span>
+              <span class="product-feature-tag">35–165 dB</span>
+              <span class="product-feature-tag">IEC WS3F</span>
+            </div>
+            <div class="product-card-footer">
+              <a href="products.html" class="btn btn-primary btn-sm">View Details</a>
+              <a href="#" class="btn btn-outline-dark btn-sm">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Datasheet
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRY3404 -->
+        <div class="product-card fade-up fade-up-delay-2">
+          <div class="product-card-img">
+            <img src="images/products/CRY3404.jpg" alt="CRY3404" class="product-photo" style="padding:.5rem;" />
+            <div class="product-badge-wrap"><span class="badge badge-green">In Stock</span></div>
+          </div>
+          <div class="product-card-body">
+            <span class="badge badge-blue" style="margin-bottom:.5rem;">¼″ · Pressure-Field · High SPL</span>
+            <h3>CRY3404 High-SPL Microphone</h3>
+            <p>1/4-inch prepolarized pressure-field microphone withstanding up to 175 dB SPL. Designed for gunshot, explosion, aviation, and aerospace acoustic testing applications.</p>
+            <div class="product-features">
+              <span class="product-feature-tag">10 Hz – 20 kHz</span>
+              <span class="product-feature-tag">59–175 dB</span>
+              <span class="product-feature-tag">IEC WS3P</span>
+            </div>
+            <div class="product-card-footer">
+              <a href="products.html" class="btn btn-primary btn-sm">View Details</a>
+              <a href="#" class="btn btn-outline-dark btn-sm">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Datasheet
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center" style="margin-top:2.5rem;">
+        <a href="products.html" class="btn btn-outline-dark">
+          View Full Catalogue
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- ── APPLICATION AREAS ── -->
+  <section class="section" id="applications">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Applications</span>
+        <h2 class="section-title">Industries We Serve</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Our measurement products are used across a wide range of professional and industrial testing environments.</p>
+      </div>
+
+      <div class="app-grid">
+        <div class="app-card fade-up">
+          <div class="app-icon">🎧</div>
+          <h4>Consumer Electronics</h4>
+          <p>Headphone, earphone &amp; speaker testing</p>
+        </div>
+        <div class="app-card fade-up fade-up-delay-1">
+          <div class="app-icon">🚗</div>
+          <h4>Automotive</h4>
+          <p>In-cabin noise, NVH, component testing</p>
+        </div>
+        <div class="app-card fade-up fade-up-delay-2">
+          <div class="app-icon">✈️</div>
+          <h4>Aerospace</h4>
+          <p>Engine noise, high-SPL acoustic testing</p>
+        </div>
+        <div class="app-card fade-up fade-up-delay-3">
+          <div class="app-icon">🏥</div>
+          <h4>Medical &amp; Hearing</h4>
+          <p>Hearing aid &amp; audiological device testing</p>
+        </div>
+        <div class="app-card fade-up">
+          <div class="app-icon">🔬</div>
+          <h4>Research &amp; Academia</h4>
+          <p>Anechoic chambers, acoustic research labs</p>
+        </div>
+        <div class="app-card fade-up fade-up-delay-1">
+          <div class="app-icon">🏭</div>
+          <h4>Industrial</h4>
+          <p>Machinery vibration &amp; noise monitoring</p>
+        </div>
+        <div class="app-card fade-up fade-up-delay-2">
+          <div class="app-icon">📡</div>
+          <h4>Telecommunications</h4>
+          <p>Microphone, handset &amp; speakerphone testing</p>
+        </div>
+        <div class="app-card fade-up fade-up-delay-3">
+          <div class="app-icon">🌿</div>
+          <h4>Environmental</h4>
+          <p>Noise monitoring &amp; environmental surveys</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 1.5 L10 5 L7.5 4 L9.5 7.5 L4 8.5 L7.5 12 L5.5 15.5 L9.5 14.5 L9 18.5 L12 17.5 L15 18.5 L14.5 14.5 L18.5 15.5 L16.5 12 L20 8.5 L14.5 7.5 L16.5 4 L14 5 Z" fill="white" opacity="0.4"/><line x1="12" y1="18" x2="12" y2="22.5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/><path d="M2,11 L4.5,11 C5,11 5.3,10.3 6,10.3 C6.7,10.3 7,11.7 7.5,11.7 C8,11.7 8.3,8 9.5,8 C10.7,8 11,14 12,14 C13,14 13.3,8.5 14.5,8.5 C15.7,8.5 16,13.5 17,13.5 C17.7,13.5 18,10.8 18.5,10.8 C19,10.8 19.3,11 20,11 L22,11" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+            <span class="name">Maple<span>Sensors</span></span>
+          </div>
+          <p>Precision sensors and expert guidance for Canadian industry.</p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2025 MapleSensors Inc. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
