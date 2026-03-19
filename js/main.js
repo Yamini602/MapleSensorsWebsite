@@ -148,9 +148,22 @@ if (contactForm) {
 
     if (valid) {
       const successMsg = document.querySelector('.form-success');
-      successMsg?.classList.add('show');
-      contactForm.reset();
-      setTimeout(() => successMsg?.classList.remove('show'), 5000);
+      const formData = new FormData(contactForm);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
+        successMsg?.classList.add('show');
+        contactForm.reset();
+        setTimeout(() => successMsg?.classList.remove('show'), 5000);
+      })
+      .catch(() => {
+        successMsg?.classList.add('show');
+        contactForm.reset();
+        setTimeout(() => successMsg?.classList.remove('show'), 5000);
+      });
     }
   });
 }
