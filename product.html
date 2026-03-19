@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Product Details – MapleSensors</title>
+  <meta name="description" id="pageDesc" content="CRYSOUND product details — MapleSensors Canadian distributor." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>" />
+  <style>
+    /* ── Product detail page styles ── */
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+    @media(max-width: 768px) {
+      .product-detail-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .product-detail-img {
+      background: var(--clr-light);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      overflow: hidden;
+    }
+    .product-detail-img img {
+      max-height: 320px;
+      width: auto;
+      object-fit: contain;
+      padding: 2rem;
+    }
+
+    .product-detail-content { }
+
+    .product-detail-badge {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+
+    .product-detail-content h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 1rem;
+    }
+
+    .product-detail-desc {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--clr-text);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Full spec table */
+    .spec-table-full {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+    .spec-table-full caption {
+      text-align: left;
+      font-family: var(--ff-heading);
+      font-weight: 700;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--clr-muted);
+      padding-bottom: .6rem;
+    }
+    .spec-table-full tr {
+      border-bottom: 1px solid var(--clr-border);
+    }
+    .spec-table-full tr:last-child { border-bottom: none; }
+    .spec-table-full td {
+      padding: .55rem .25rem;
+      font-size: .875rem;
+      vertical-align: top;
+    }
+    .spec-table-full td:first-child {
+      color: var(--clr-muted);
+      font-weight: 500;
+      width: 42%;
+      padding-right: 1rem;
+    }
+    .spec-table-full td:last-child {
+      color: var(--clr-primary);
+      font-weight: 600;
+    }
+
+    /* Highlights & applications */
+    .detail-section-label {
+      font-family: var(--ff-heading);
+      font-weight: 700;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--clr-muted);
+      margin-bottom: .5rem;
+      margin-top: 1.5rem;
+    }
+    .detail-list {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      margin-bottom: 1rem;
+    }
+    .detail-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+      font-size: .9rem;
+      color: var(--clr-text);
+    }
+    .detail-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--clr-secondary);
+      margin-top: .55rem;
+    }
+
+    .detail-cta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--clr-border);
+    }
+
+    /* Not found state */
+    .product-not-found {
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .product-not-found h2 { margin-bottom: 1rem; }
+    .product-not-found p { color: var(--clr-muted); margin-bottom: 2rem; }
+
+    /* Related / back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--clr-muted);
+      font-size: .875rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--clr-secondary); }
+    .back-link svg { width: 16px; }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 1.5 L10 5 L7.5 4 L9.5 7.5 L4 8.5 L7.5 12 L5.5 15.5 L9.5 14.5 L9 18.5 L12 17.5 L15 18.5 L14.5 14.5 L18.5 15.5 L16.5 12 L20 8.5 L14.5 7.5 L16.5 4 L14 5 Z" fill="white" opacity="0.4"/><line x1="12" y1="18" x2="12" y2="22.5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/><path d="M2,11 L4.5,11 C5,11 5.3,10.3 6,10.3 C6.7,10.3 7,11.7 7.5,11.7 C8,11.7 8.3,8 9.5,8 C10.7,8 11,14 12,14 C13,14 13.3,8.5 14.5,8.5 C15.7,8.5 16,13.5 17,13.5 C17.7,13.5 18,10.8 18.5,10.8 C19,10.8 19.3,11 20,11 L22,11" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <span class="nav-logo-text">Maple<span>Sensors</span></span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html"    class="nav-link">Home</a></li>
+        <li><a href="products.html" class="nav-link active">Products</a></li>
+        <li><a href="about.html"    class="nav-link">About Us</a></li>
+        <li><a href="contact.html"  class="nav-link nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- ── PRODUCT DETAIL SECTION ── -->
+  <section class="section">
+    <div class="container" id="productDetailContainer">
+
+      <!-- Populated by JS -->
+      <div class="product-not-found" id="notFoundMsg" style="display:none;">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <h2>Product Not Found</h2>
+        <p>The product you're looking for doesn't exist or may have been moved.</p>
+        <a href="products.html" class="btn btn-primary">Browse All Products</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section" id="ctaSection" style="display:none;">
+    <div class="container">
+      <h2 class="section-title">Ready to Order?</h2>
+      <p>Contact our acoustic engineers to request a quote or ask technical questions about this product.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+        <a href="products.html" class="btn btn-outline">Browse All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo"><div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 1.5 L10 5 L7.5 4 L9.5 7.5 L4 8.5 L7.5 12 L5.5 15.5 L9.5 14.5 L9 18.5 L12 17.5 L15 18.5 L14.5 14.5 L18.5 15.5 L16.5 12 L20 8.5 L14.5 7.5 L16.5 4 L14 5 Z" fill="white" opacity="0.4"/><line x1="12" y1="18" x2="12" y2="22.5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/><path d="M2,11 L4.5,11 C5,11 5.3,10.3 6,10.3 C6.7,10.3 7,11.7 7.5,11.7 C8,11.7 8.3,8 9.5,8 C10.7,8 11,14 12,14 C13,14 13.3,8.5 14.5,8.5 C15.7,8.5 16,13.5 17,13.5 C17.7,13.5 18,10.8 18.5,10.8 C19,10.8 19.3,11 20,11 L22,11" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div><span class="name">Maple<span>Sensors</span></span></div>
+          <p>Precision sensors and expert guidance for Canadian industry.</p>
+        </div>
+        <div class="footer-col"><h4>Products</h4><ul class="footer-links">
+          <li><a href="products.html">1″ Microphones</a></li>
+          <li><a href="products.html">½″ Microphones</a></li>
+          <li><a href="products.html">¼″ Microphones</a></li>
+          <li><a href="products.html">Preamplifiers</a></li>
+          <li><a href="products.html">Ear Simulators</a></li>
+          <li><a href="products.html">Accelerometers</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>Company</h4><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+1 (438) 728-3040</span></div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>info@maplesensors.ca</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2025 MapleSensors Inc. All rights reserved.</span><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('navbar').classList.add('scrolled');
+
+    (function() {
+      // Get product ID from URL: product.html?id=CRY3203
+      const params = new URLSearchParams(window.location.search);
+      const productId = params.get('id');
+      const container = document.getElementById('productDetailContainer');
+      const notFound  = document.getElementById('notFoundMsg');
+      const ctaSection = document.getElementById('ctaSection');
+
+      if (!productId) {
+        notFound.style.display = 'block';
+        return;
+      }
+
+      const product = getProductById(productId);
+
+      if (!product) {
+        notFound.style.display = 'block';
+        return;
+      }
+
+      // Update page title and meta
+      document.getElementById('pageTitle').textContent = product.name + ' – MapleSensors';
+      document.getElementById('pageDesc').setAttribute('content',
+        product.description ? product.description.substring(0, 160) : product.name + ' – CRYSOUND measurement sensor from MapleSensors Canada.');
+
+      // Build breadcrumb
+      const breadcrumb = document.createElement('div');
+      breadcrumb.className = 'breadcrumb';
+      breadcrumb.innerHTML = '<a href="index.html">Home</a>'
+        + '<span class="breadcrumb-sep">/</span>'
+        + '<a href="products.html">Products</a>'
+        + '<span class="breadcrumb-sep">/</span>'
+        + '<span>' + product.name + '</span>';
+      container.appendChild(breadcrumb);
+
+      // Back link
+      const backLink = document.createElement('a');
+      backLink.href = 'products.html';
+      backLink.className = 'back-link';
+      backLink.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back to Products';
+      container.appendChild(backLink);
+
+      // Build product detail grid
+      const grid = document.createElement('div');
+      grid.className = 'product-detail-grid';
+
+      // — Image column —
+      const imgCol = document.createElement('div');
+      imgCol.className = 'product-detail-img';
+      const img = document.createElement('img');
+      img.src = product.image || 'images/products/placeholder.jpg';
+      img.alt = product.name;
+      img.onerror = function() {
+        // Fallback SVG if image not found
+        imgCol.innerHTML = '<svg viewBox="0 0 80 80" fill="none" stroke="#c8102e" stroke-width="1.5" width="80" height="80">'
+          + '<rect x="10" y="20" width="20" height="40" rx="3"/>'
+          + '<rect x="50" y="25" width="20" height="35" rx="3"/>'
+          + '<circle cx="20" cy="16" r="4"/>'
+          + '<circle cx="60" cy="21" r="3"/>'
+          + '</svg>';
+      };
+      imgCol.appendChild(img);
+
+      // — Content column —
+      const contentCol = document.createElement('div');
+      contentCol.className = 'product-detail-content';
+
+      // Badge
+      if (product.badge) {
+        const badgeWrap = document.createElement('div');
+        badgeWrap.className = 'product-detail-badge';
+        const badge = document.createElement('span');
+        badge.className = 'badge badge-blue';
+        badge.textContent = product.badge;
+        badgeWrap.appendChild(badge);
+        contentCol.appendChild(badgeWrap);
+      }
+
+      // Name
+      const h1 = document.createElement('h1');
+      h1.textContent = product.name;
+      contentCol.appendChild(h1);
+
+      // Description
+      if (product.description) {
+        const desc = document.createElement('p');
+        desc.className = 'product-detail-desc';
+        desc.textContent = product.description;
+        contentCol.appendChild(desc);
+      }
+
+      // Specifications table
+      if (product.specs && Object.keys(product.specs).length > 0) {
+        const specLabel = document.createElement('p');
+        specLabel.className = 'detail-section-label';
+        specLabel.textContent = 'Specifications';
+        contentCol.appendChild(specLabel);
+
+        const table = document.createElement('table');
+        table.className = 'spec-table-full';
+        const tbody = document.createElement('tbody');
+        for (const [key, val] of Object.entries(product.specs)) {
+          const tr = document.createElement('tr');
+          tr.innerHTML = '<td>' + key + '</td><td>' + val + '</td>';
+          tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+        contentCol.appendChild(table);
+      }
+
+      // Highlights
+      if (product.highlights && product.highlights.length > 0) {
+        const hlLabel = document.createElement('p');
+        hlLabel.className = 'detail-section-label';
+        hlLabel.textContent = 'Key Features';
+        contentCol.appendChild(hlLabel);
+
+        const ul = document.createElement('ul');
+        ul.className = 'detail-list';
+        product.highlights.forEach(function(item) {
+          const li = document.createElement('li');
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+        contentCol.appendChild(ul);
+      }
+
+      // Applications
+      if (product.applications && product.applications.length > 0) {
+        const appLabel = document.createElement('p');
+        appLabel.className = 'detail-section-label';
+        appLabel.textContent = 'Typical Applications';
+        contentCol.appendChild(appLabel);
+
+        const ul = document.createElement('ul');
+        ul.className = 'detail-list';
+        product.applications.forEach(function(item) {
+          const li = document.createElement('li');
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+        contentCol.appendChild(ul);
+      }
+
+      // CTA row
+      const ctaRow = document.createElement('div');
+      ctaRow.className = 'detail-cta-row';
+      ctaRow.innerHTML = '<a href="contact.html?product=' + encodeURIComponent(product.name) + '" class="btn btn-primary">Request a Quote</a>'
+        + '<a href="products.html" class="btn btn-outline-dark">Back to Products</a>';
+      contentCol.appendChild(ctaRow);
+
+      grid.appendChild(imgCol);
+      grid.appendChild(contentCol);
+      container.appendChild(grid);
+
+      // Show CTA section
+      ctaSection.style.display = '';
+    })();
+  </script>
+</body>
+</html>
