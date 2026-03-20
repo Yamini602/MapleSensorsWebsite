@@ -15,15 +15,14 @@ LayerTechnologyFrontendHTML5, CSS3, Vanilla JavaScript (AI-assisted via Claude C
 
 What I Built & Configured
 -------------------------
-Frontend
---------
+Frontend -
+
 Responsive multi-page layout — mobile-first across all screen sizes
 Product catalogue with dynamic JavaScript filtering
 Contact form integrated with Netlify Forms
 Scroll-triggered reveal animations
 
 Infrastructure (independently configured) -
------------------------------------------
 
 Custom domain purchased and nameservers delegated to Netlify DNS
 Full DNS zone setup — NETLIFY, MX, SPF, DKIM, and DMARC records
@@ -35,7 +34,7 @@ SPF — authorized Zoho as legitimate sender
 DKIM — cryptographic email signing via zmail._domainkey
 DMARC — policy enforcement with aggregate reporting
 
-------------------------------------------------
+
 Netlify Forms → Zoho inbox notification pipeline
 ------------------------------------------------
 
