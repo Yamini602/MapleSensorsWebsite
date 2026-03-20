@@ -36,8 +36,7 @@ DMARC — policy enforcement with aggregate reporting
 
 **Netlify Forms → Zoho inbox notification pipeline**
 
-What I Learned:
----------------
+**What I Learned:**
 
 DNS management — configuring a full DNS zone from scratch, understanding how MX, TXT, and CDN records work together
 Email authentication — SPF, DKIM, and DMARC aren't just acronyms — I configured all three and debugged real delivery failures
