@@ -35,7 +35,7 @@ DKIM — cryptographic email signing via zmail._domainkey
 DMARC — policy enforcement with aggregate reporting
 
 **Netlify Forms → Zoho inbox notification pipeline**
-
+---------------------
 **What I Learned:**
 
 DNS management — configuring a full DNS zone from scratch, understanding how MX, TXT, and CDN records work together
