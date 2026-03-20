@@ -1,4 +1,4 @@
-🍁 MapleSensors
+**🍁 MapleSensors**
 
 Production website for a Canadian precision sensor distributor — AI-assisted frontend with full independent ownership of infrastructure, deployment, and email configuration.
 
