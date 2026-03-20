@@ -2,24 +2,27 @@
 
 Production website for a Canadian precision sensor distributor — AI-assisted frontend with full independent ownership of infrastructure, deployment, and email configuration.
 
-Live Site: maplesensors.ca  |  Deployed on: Netlify  |  Domain: Spaceship
+Live Site: www.maplesensors.ca  |  Deployed on: Netlify  |  Domain: Spaceship
 
 Overview
+--------
 MapleSensors goes beyond a typical portfolio project. The frontend was built using Claude Code (AI-assisted development) — but the focus of this project was everything that comes after the code: getting a real domain live, wiring up a CI/CD pipeline, configuring DNS from scratch, and setting up a fully authenticated business email system.
 All infrastructure, deployment, and email configuration was done independently.
 
 Tech Stack
+----------
 LayerTechnologyFrontendHTML5, CSS3, Vanilla JavaScript (AI-assisted via Claude Code)DeploymentNetlify — CI/CD connected to GitHubVersion ControlGit + GitHubDomainSpaceship registrar → Netlify DNSBusiness EmailZoho MailForm HandlingNetlify Forms → email notificationsSSLAuto-provisioned via Let's Encrypt
 
 What I Built & Configured
-Frontend
+-------------------------
+Frontend -
 
 Responsive multi-page layout — mobile-first across all screen sizes
 Product catalogue with dynamic JavaScript filtering
 Contact form integrated with Netlify Forms
 Scroll-triggered reveal animations
 
-Infrastructure (independently configured)
+Infrastructure (independently configured) -
 
 Custom domain purchased and nameservers delegated to Netlify DNS
 Full DNS zone setup — NETLIFY, MX, SPF, DKIM, and DMARC records
